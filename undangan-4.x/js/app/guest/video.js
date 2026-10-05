@@ -14,7 +14,7 @@ export const video = (() => {
      * @returns {Promise<void>}
      */
     const load = () => {
-        const wrap = document.getElementById('video-love-stroy');
+        const wrap = document.getElementById('video-love-story') ?? document.getElementById('video-love-stroy');
         if (!wrap || !wrap.hasAttribute('data-src')) {
             wrap?.remove();
             progress.complete('video', true);
@@ -55,8 +55,8 @@ export const video = (() => {
          * @returns {Promise<Response>}
          */
         const fetchBasic = () => {
-            const bar = document.getElementById('progress-bar-video-love-stroy');
-            const inf = document.getElementById('progress-info-video-love-stroy');
+            const bar = document.getElementById('progress-bar-video-love-story') ?? document.getElementById('progress-bar-video-love-stroy');
+            const inf = document.getElementById('progress-info-video-love-story') ?? document.getElementById('progress-info-video-love-stroy');
 
             return request(HTTP_GET, src).withNoBody().default({ 'Range': 'bytes=0-1' }).then((res) => {
 
@@ -121,7 +121,7 @@ export const video = (() => {
             observer.observe(vid);
             vid.style.removeProperty('height');
             wrap.style.removeProperty('height');
-            document.getElementById('video-love-stroy-loading')?.remove();
+            document.getElementById('video-love-story-loading')?.remove() ?? document.getElementById('video-love-stroy-loading')?.remove();
         });
     };
 
